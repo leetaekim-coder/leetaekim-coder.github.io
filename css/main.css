@@ -1,0 +1,351 @@
+/* --------------------------------------------
+   GLOBAL VARIABLE: Header logo/subtitle controls
+   -------------------------------------------- */
+:root {
+    --header-logo-font-size: 8.2rem;       /* 상단 TDLiD 크기 */
+    --header-logo-font-weight: 900;        /* 상단 TDLiD 두께 */
+
+    --header-subtitle-font-size: 1.0rem;   /* "TDL ENERGY INDONESIA" 크기 - 더 미니멀하게 줄임 */
+    --header-subtitle-font-weight: 700;    /* 두께 */
+
+}
+
+/* 기존 내용은 그대로 유지 */
+/* 아래는 새로 추가 / 덮어쓰기 되는 스타일 섹션입니다 */
+
+/* CTA primary/secondary */
+.cta-primary { 
+    background: linear-gradient(90deg, #06b6d4, #7c3aed); 
+    color: #020617; 
+}
+.cta-secondary { 
+    background: transparent; 
+    border: 1px solid rgba(255,255,255,0.06); 
+    color: #e6eef8; 
+}
+
+/* Sticky CTA bar visibility (삭제됨) */
+#stickyCTABar.hidden { 
+    display: none; 
+}
+
+/* Modal base */
+#compareModal, #quoteModal, #newsModal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+/* NEW: News Modal Scrollbar */
+#newsList::-webkit-scrollbar {
+    width: 8px;
+}
+#newsList::-webkit-scrollbar-track {
+    background: #0a0a0a;
+    border-radius: 10px;
+}
+#newsList::-webkit-scrollbar-thumb {
+    background: #0f172a; /* neutral-900 */
+    border-radius: 10px;
+    border: 2px solid #0a0a0a; /* Add border for inner color effect */
+}
+
+#compareModal.show, #quoteModal.show {
+    display: flex;
+}
+
+/* Compare table */
+#compareTableContainer table {
+    width: 100%;
+    border-collapse: collapse;
+}
+#compareTableContainer th, #compareTableContainer td {
+    border: 1px solid rgba(255,255,255,0.04);
+    padding: 12px;
+    text-align: left;
+}
+
+/* Product card tweaks */
+.product-datasheet {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 0.85rem;
+}
+
+/* Mobile tweaks */
+@media (max-width: 768px) {
+    #stickyCTABar { 
+        display: none !important; 
+    }
+    .hero-content { 
+        padding: 2rem 1rem; 
+    }
+}
+
+/* Focus */
+button:focus, a:focus, input:focus, textarea:focus {
+    outline: 3px solid rgba(34,211,238,0.18);
+    outline-offset: 2px;
+}
+
+/* Hero text animation */
+.hero-slogan-gradient,
+#heroIntroText { 
+    animation: heroTextIn 1.2s ease forwards; /* 애니메이션 속도 약간 늦춤 */
+    opacity: 0; 
+    transform: translateY(24px); 
+}
+.hero-slogan-gradient { animation-delay: .5s; }
+#heroIntroText { animation-delay: .8s; }
+
+@keyframes heroTextIn { 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+/* Logos row */
+#trust img { object-fit: contain; }
+
+/* product grid optimization */
+#productGrid img { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+}
+
+/* Hero Section (Full-Screen) */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;     /* 세로 중앙 */
+    padding-top: 0;          /* 기존 padding-top 제거 */
+}
+
+.hero-video { 
+    position: absolute; 
+    inset: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    z-index: 0; 
+    filter: brightness(0.3) blur(1.2px); /* 더 어둡고 선명하게 */
+    transform: scale(1.05); 
+    pointer-events: none;
+}
+
+.hero-content { 
+    position: relative; 
+    z-index: 2; 
+    padding: 2.5rem;
+    pointer-events: none;
+    text-align: center;
+}
+
+/* WA btn */
+#waBtn { transition: transform .12s ease; }
+#waBtn:active { transform: scale(.98); }
+
+/* file link helper */
+a.fileLink { 
+    color: #86efac; 
+    text-decoration: underline; 
+}
+
+/* Product cards */
+#productGrid > div { 
+    transition: transform .45s cubic-bezier(.19,1,.22,1), box-shadow .45s; 
+}
+
+/* Modals */
+#compareModal { z-index: 9999; }
+#quoteModal { z-index: 10000; }
+
+/* ============================================
+   HERO MAIN LOGO — TDLiD
+   ============================================ */
+.hero-logo-gradient {
+    font-family: "Arial Black", "Impact", "Segoe UI Black", sans-serif;
+    font-size: clamp(4rem, 10vw, var(--header-logo-font-size)); /* 반응형 크기 설정 */
+    font-weight: var(--header-logo-font-weight);
+    letter-spacing: 0.3em; /* 간격 줄임 */
+    line-height: 1;
+
+    background: linear-gradient(
+        90deg,
+        #22d3ee, /* 밝은 파랑 */
+        #1e40af, /* 진한 파랑 */
+        #4ade80, /* 녹색 */
+        #00140c
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+
+    filter: drop-shadow(0 0 10px rgba(34, 211, 238, 0.5)); /* 섀도우 강화 */
+    margin-bottom: 0;
+}
+
+/* ============================================
+   HERO SUB SLOGAN — NO MORE CARBON
+   ============================================ */
+.hero-slogan-gradient {
+    font-family: "Arial Black", "Impact", "Segoe UI Black", sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.6rem);
+    font-weight: 900;
+    letter-spacing: 0.25em; /* 간격 줄임 */
+    text-align: center;
+    text-transform: uppercase;
+
+    background: linear-gradient(
+        90deg,
+        #4ade80,
+        #22d3ee,
+        #1e40af
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+
+    filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.4));
+    margin-top: 10px; /* TDLiD와 간격 줄임 */
+    margin-bottom: 30px;
+}
+
+/* ============================================
+   HEADER SUBTITLE — "TDL ENERGY INDONESIA"
+   ============================================ */
+.animated-logo-text { 
+    font-size: var(--header-subtitle-font-size) !important;
+    font-weight: var(--header-subtitle-font-weight) !important;
+    color: #e5e7eb;
+    letter-spacing: 0.08em; /* 간격 줄임 */
+    text-transform: uppercase;
+    display: inline-flex;
+    gap: 1px;
+}
+
+/* Header logo image */
+.header-logo {
+    height: 40px; /* 더 작게 */
+    width: auto;
+}
+
+/* 알파벳 별 색상 - 미니멀 헤더 로고 색상 제거 */
+.animated-logo-text span { color: inherit !important; }
+
+/* Desktop Menu Hover Line (제거) */
+.nav-link::after { display: none; }
+.nav-link:hover::after { width: 0; }
+
+
+/* ============================================
+   NEW: Full-Screen Menu Styles
+   ============================================ */
+#fullScreenMenu nav a {
+    position: relative;
+    font-weight: 200;
+    letter-spacing: 0.1em;
+    padding: 10px 0;
+    overflow: hidden;
+}
+
+/* Hover effect: Subtle underline reveal */
+#fullScreenMenu nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    height: 1px;
+    background-color: #22d3ee;
+    transition: left 0.3s ease-out;
+}
+
+#fullScreenMenu nav a:hover::after {
+    left: 0;
+}
+
+
+/* Mobile menu animation (not used, replaced by fullScreenMenu) */
+#mobileMenu { display: none; } 
+
+/* ================================
+   CURSOR SPOTLIGHT EFFECT (유지)
+================================ */
+/* ... 기존 스타일 유지 ... */
+
+/* Hero 섹션 소개 텍스트 폰트 크기 조정 */
+#heroIntroText {
+    font-size: clamp(1rem, 2vw, 1.3rem); /* 반응형으로 조정 */
+    line-height: 1.8; /* 가독성 높임 */
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* 🌟 FIX: Re-enable interaction for certification images */
+.interactive-certs {
+    pointer-events: auto;
+}
+
+.cert-link {
+    cursor: pointer;
+}
+
+/* FIX: Image Modal Fixed Positioning Override */
+#imageModal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 인증 이미지 확대 효과를 위한 컨테이너 스타일 (유지) */
+.cert-zoom-wrapper {
+    overflow: visible;
+    display: inline-block; 
+    cursor: pointer;
+    border-radius: 0.5rem; 
+    position: relative;
+    z-index: 1; 
+    transition: z-index 0s 0.3s;
+}
+
+/* 마우스 오버 시 컨테이너의 z-index를 높여서 이미지가 다른 요소 위에 표시되게 함 */
+.cert-zoom-wrapper:hover {
+    z-index: 10; 
+    transition: z-index 0s;
+}
+
+/* 마우스 오버 시 이미지 확대 */
+.cert-zoom-wrapper:hover img {
+    transform: scale(1.15); /* 조금 더 크게 확대 */
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.6); /* 고급스러운 섀도우 추가 */
+}
+
+/* ... 나머지 스타일 유지 (footer, body, popup, media queries) ... */
+
+/* 전체 페이지에 대한 설정 */
+body {
+    font-family: 'Pretendard', sans-serif;
+    color: #ffffff;
+    background-color: #000000;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Footer 스타일 */
+footer {
+    background-color: #0a0a0a; /* neutral-950과 구분 */
+    color: #666;
+    padding: 20px 0;
+    margin-top: auto; /* 하단에 고정 */
+}
